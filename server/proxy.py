@@ -28,13 +28,13 @@ class TSProxy(basic.LineReceiver):
 			self.port = given
 
 			# Create the TS Forwarder
-			self.fw = reactor.listenUDP(given, fw.TSForwarder((dest[1], int(dest[2])), self.transport.getHost().host))
+			self.fw = reactor.listenUDP(given, fw.TSForwarder((dest[1], int(dest[2])), self.transport.getPeer().host))
 
 			# Reply with the port number
 			self.transport.write(str(given) + "\r\n")
 
 			# A little something for the logs
-			print "%s asked for port %d, port %d given" % (self.transport.getHost().host, int(dest[0]), given)
+			print "%s asked for port %d, port %d given" % (self.transport.getPeer().host, int(dest[0]), given)
 
 	def connectionLost(self, reason):
 		if self.fw != None:
