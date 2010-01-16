@@ -31,15 +31,12 @@ class UDPForwarder(DatagramProtocol):
 		"""If a valid packet comes in, it is forwarded to the other end"""
 
 		if self.checkData(data):
-			print "pass"
 			if self.host_from == host:
 				if(self.port_from != port):
 					self.port_from = port
 				self.transport.write(data, (self.host_to, self.port_to))
 			elif (self.host_to == host) and (self.port_from != None):
 				self.transport.write(data, (self.host_from, self.port_from))
-		else:
-			print "drop"
 
 	def checkData(self, data):
 		"""Validates a packet. Intented to be overloaded with heritage, not useful here, because it always returns True"""
@@ -78,5 +75,4 @@ class TSForwarder(UDPForwarder):
 				self.cnt[pclass] = pcnt
 				return True
 			else:
-				print "can not pass, last count = %d, current count = %d" % (self.cnt[pclass], pcnt)
 				return False
