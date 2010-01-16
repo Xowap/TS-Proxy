@@ -9,11 +9,11 @@
 # no waranties at all.
 ##
 
-import proxy
+import tsproxy
 
 from twisted.application import internet, service
 
-f = proxy.TSProxyFactory()
+f = tsproxy.TSProxyFactory()
 
 application = service.Application('tsproxy')
 serviceCollection = service.IServiceCollection(application)
