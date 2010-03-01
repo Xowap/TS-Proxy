@@ -182,7 +182,7 @@ void MainWindow::displayError(QAbstractSocket::SocketError socketError) {
     emit connectionStatusChanged(false);
 }
 
-void MainWindow::on_actionQuitter_destroyed()
+void MainWindow::on_actionQuitter_triggered()
 {
     qApp->quit();
 }

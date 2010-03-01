@@ -50,7 +50,7 @@ signals:
     void newConnectionStatus(bool);
 
 private slots:
-    void on_actionQuitter_destroyed();
+    void on_actionQuitter_triggered();
 };
 
 #endif // MAINWINDOW_H
